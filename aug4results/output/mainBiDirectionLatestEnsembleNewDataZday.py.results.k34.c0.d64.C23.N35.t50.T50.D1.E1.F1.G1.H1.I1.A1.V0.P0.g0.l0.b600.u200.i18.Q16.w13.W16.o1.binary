@@ -1,0 +1,2 @@
+tpr	, fpr	, Acc	, F1	, F2	, tp	, tn	, fp	, fn	, File ID
+0.8100	, 0.0033	, 0.9088	, 0.8932	, 0.8413	, 648	, 897	, 3	, 152	, eilqwofb

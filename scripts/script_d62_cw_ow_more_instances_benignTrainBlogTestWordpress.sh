@@ -1,0 +1,29 @@
+# For -d 62:
+# ----------
+# -i: used in closed-world and open-world to decide number of benign classes
+# -u: for the open world setting only, benign is the nonMonitored, -u is split between training and testing
+for var in 1 2 3 4 5
+do
+
+# cw
+#python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 16 -T 4 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -i 2
+
+#python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 16 -T 4 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -X 10 -i 2 # -X cross validation
+
+
+#python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 40 -T 20 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -i 2
+
+#python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 40 -T 20 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -X 10 -i 2 # -X cross validation
+
+
+# ow
+# not cv, benign: 960 from blog for training and 960 from wordpress for testing. check python code
+python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 100 -T 100 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -u 960 -i 2 
+
+#python mainBiDirectionFeaturesMultipleClassifiersOpenWorldWangTor.py -d 62 -C 3,15,23 -c 0 -k 7 -N 8 -t 100 -T 100 -n 1 -D 1 -E 1 -F 1 -G 1 -H 1 -I 1 -A 1 -V 0 -b 600 -u 960 -X 10 -i 2 # -X cross validation
+
+
+ 
+done
+
+

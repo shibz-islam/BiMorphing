@@ -1,0 +1,3 @@
+accuracy,overhead,timeElapsedTotal,timeElapsedClassifier,fileId
+5.26666666667, 70320780/16259626, 5958.09, 30.10, yfxce4lj, -1, {'layers': '1000,1000,1000', 'corruption_level': '0.3', 'batch_size': '20', 'pretraining_epochs': '20', 'finetune_lr': '0.1', 'learning_rate': '0.1', 'pretrain_lr': '0.001', 'training_epochs': '20', 'corruption_levels': '0.1,0.2,0.3', 'n_hidden_ratio': '0.333'}, , time orig/time extra: 0/0
+8.43333333333, 66180828/16259626, 6738.81, 30.86, mpdf17ja, -1, {'layers': '1000,1000,1000', 'corruption_level': '0.3', 'batch_size': '20', 'pretraining_epochs': '20', 'finetune_lr': '0.1', 'learning_rate': '0.1', 'pretrain_lr': '0.001', 'training_epochs': '20', 'corruption_levels': '0.1,0.2,0.3', 'n_hidden_ratio': '0.333'}, , time orig/time extra: 0/0

@@ -1,0 +1,101 @@
+import os
+import fnmatch
+
+numAttacks=101 # 5  attacks and no attack -w 0
+
+#TPR
+TPR = [None] * numAttacks
+
+for i in range(len(TPR)):
+    TPR[i] = [None] * 3
+
+#FPR
+FPR = [None] * numAttacks
+
+for i in range(len(FPR)):
+    FPR[i] = [None] * 3
+
+#ACC
+ACC = [None] * numAttacks
+
+for i in range(len(ACC)):
+    ACC[i] = [None] * 3
+
+#F2
+F2 = [None] * numAttacks
+
+for i in range(len(F2)):
+    F2[i] = [None] * 3
+
+
+desc = os.path.dirname(os.path.realpath(__file__)).split(os.sep)[-2]
+
+def __writeFile(resultsList, type):
+    resultType = type
+    dir = os.path.join('.', desc)
+    if not os.path.exists(dir):
+        os.mkdir(dir)
+
+    f = open( os.path.join(dir, resultType), 'w' )
+    f.write("#"+desc+"\n")
+    for entry in [resultsList[i] for i in [10,20,30,40,50,60,70,80,90,100]]:
+        f.write( str(entry[0])+'\t'+str(entry[1])+'\t'+str(entry[2])+"\n" )
+
+    f.close()
+
+
+
+def extract(exp):
+	for (path, dirs, files) in os.walk('.'):
+	    for myfile in files:
+		if fnmatch.fnmatch(myfile, '*binary'):
+		    print myfile
+		    fileLines = [line.strip() for line in open(os.path.join('.', myfile))]
+
+		    for fileLine in fileLines:
+		        if not fileLine.startswith("tpr"):
+		            lineResults = fileLine.split(",") # [tpr	, fpr	, Acc	, F2	, tp	, tn	, fp	, fn	, File ID]
+
+		    C = int(myfile.split(".C")[1].split(".")[0])
+		    w = int(myfile.split(".t")[1].split(".")[0]) 
+		    exptype = int(myfile.split(".o")[1].split(".")[0])
+                    train = int(myfile.split(".t")[1].split(".")[0])
+                    if str(exptype) == str(exp):
+			    print w
+			    print len(TPR)
+			    TPR[w][0] = w
+			    FPR[w][0] = w
+			    ACC[w][0] = w
+			    F2[w][0]  = w
+
+			    if C == 23:
+				TPR[w][1] = '%.2f' % (float(lineResults[0]) * 100)
+				FPR[w][1] = '%.2f' % (float(lineResults[1]) * 100)
+				ACC[w][1] = '%.2f' % (float(lineResults[2]) * 100)
+				F2[w][1]  = '%.2f' % (float(lineResults[3]) * 100)
+			    elif C == 43:
+				TPR[w][2] = '%.2f' % (float(lineResults[0]) * 100)
+				FPR[w][2] = '%.2f' % (float(lineResults[1]) * 100)
+				ACC[w][2] = '%.2f' % (float(lineResults[2]) * 100)
+				F2[w][2]  = '%.2f' % (float(lineResults[3]) * 100)
+			    else:
+				print "Code shouldn't come to here!"	
+
+
+
+	print 'tpr'
+	for entry in TPR:
+	    print entry
+	    print '\n'
+	print 'fpr'
+	for entry in FPR:
+	    print entry
+	    print '\n'
+
+	__writeFile(TPR, 'tpr'+str(exp)+"_onesvm")
+	__writeFile(FPR, 'fpr'+str(exp)+"_onesvm")
+	__writeFile(ACC, 'acc'+str(exp)+"_onesvm")
+	__writeFile(F2,  'f2'+str(exp)+"_onesvm")
+
+extract(1)
+
