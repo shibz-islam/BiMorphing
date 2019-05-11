@@ -1,5 +1,10 @@
 # BiMorphing
 
+This is a Python framework for the paper "BiMorphing: A Bi-Directional Bursting Defense Against Website Fingerprinting Attacks" [3].
+
+Author: Khaled Al-Naami 
+https://github.com/khaled-alnaami
+
 
 Network Traffic Fingerprinting
 ==============================
